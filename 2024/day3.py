@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 
 # Get all the lines from the file and make a big string
 def recover_data(file):
@@ -44,7 +45,9 @@ def remove_disabled_sections(data):
     return ''.join(result)
 
 # Part one
-filename = "day3input.txt"
+script_dir = Path(__file__).parent
+filename = script_dir / "day3input.txt"
+
 text= recover_data(filename)
 print(f"The result of the addition for all the multiplications that appear with mul  is {calculate_mul(find_mul(text))}")
 # Part two

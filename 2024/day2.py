@@ -1,3 +1,4 @@
+from pathlib import Path
 # Read the file and generate a list of lists structure
 def define_lines(file):
     #  Open the file and close it when we don't need it more.
@@ -25,7 +26,7 @@ def differ_levels(list):
     return all(1 <= abs(list[i] - list[i+1]) <= 3 for i in range(len(list) - 1))
 
 # Check all the conditions
-def is_valid(list, allow_removal=False):
+def is_valid(list, allow_removal):
     # For part 1
     if increase_decrease(list) and differ_levels(list):
         return True
@@ -41,7 +42,9 @@ def is_valid(list, allow_removal=False):
 
 
 
-filename = "day2input.txt"
+script_dir = Path(__file__).parent
+filename = script_dir / "day2input.txt"
+
 lines = define_lines(filename)
 report_without_removal = 0
 report_with_removal = 0

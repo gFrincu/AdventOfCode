@@ -1,3 +1,4 @@
+from pathlib import Path
 def read_file(file):
     with open(file, "r", encoding="utf-8") as f:
         content = f.readlines()
@@ -62,7 +63,9 @@ def predict_path(map):
 
 
 # Part one
-filename = "day6input.txt"
+script_dir = Path(__file__).parent
+filename = script_dir / "day6input.txt"
+
 map = read_file(filename)
 print(f"The guard will visit {predict_path(map)} distinct positions before leaving the area")
 # Part two

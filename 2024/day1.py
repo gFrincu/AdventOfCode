@@ -1,3 +1,4 @@
+from pathlib import Path
 # Read the file and return 2 lists
 def read_file_lists(filename):
     list1 = []
@@ -49,15 +50,11 @@ def find_similarity_score(list1, list2):
     return score
 
 # Part one
-filename = "2024/day1input.txt"
+script_dir = Path(__file__).parent
+filename = script_dir / "day1input.txt"
 
 # Read the lists
 list1, list2 = read_file_lists(filename)
-
-#  Check if the lists are not empty
-if not list1 or not list2:
-    print("One of the lists is empty. Please check the input file.")
-    exit()
 
 # Sort the lists
 list1, list2 = sort_lists(list1, list2)

@@ -1,3 +1,4 @@
+from pathlib import Path
 # For part one I've used this stack overflow question. Thanks to willredington. https://stackoverflow.com/questions/6313308/get-all-the-diagonals-in-a-matrix-list-of-lists-in-python
 # Read the file and generate a list of lists structure
 def define_lines(file):
@@ -110,9 +111,8 @@ def find_x_mas(matrix):
     # We know that in the middle of the x, we will need to find an "A". So we will try to find those middles of the x. We are not checking borders.
     for i in range(1, rows - 1):
         for j in range(1, cols - 1):
-            if matrix[i][j] == 'A':
-                if is_x_mas(matrix, i, j):
-                    count += 1
+            if matrix[i][j] == 'A' and is_x_mas(matrix, i, j):
+                count += 1
 
     return count
 
@@ -137,7 +137,9 @@ def is_x_mas(matrix, i, j):
 
 
 
-filename = "day4input.txt"
+script_dir = Path(__file__).parent
+filename = script_dir / "day4input.txt"
+
 matrix = define_lines(filename)
 result=find_words_in_matrix(matrix, "XMAS")
 print(f"The word appears {result} times in the matrix")
